@@ -7,3 +7,5 @@ class Song < InteractiveRecord
   end
 
 end
+
+#The only code the Song class needs to contain is the code to create the attr_accessors specific to itself. But even that code uses a method, #column_names, inherited from the super class.
