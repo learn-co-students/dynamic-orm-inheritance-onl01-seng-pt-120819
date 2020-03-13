@@ -1,6 +1,15 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
 
+#the InteractiveRecord class contains almost all of the code 
+#responsible for communicating between our Ruby program and our database
+
+#all of the methods defined there are abstract––they do not reference explicit class 
+#or attribute names nor do they reference explicit table or column names
+
+#These are methods that can be used by any Ruby class or instance, 
+#as long as we make them available to that class or instance
+
 class InteractiveRecord
 
   def self.table_name
@@ -48,9 +57,9 @@ class InteractiveRecord
     self.class.column_names.delete_if {|col| col == "id"}.join(", ")
   end
 
-def self.find_by_name(name)
+  def self.find_by_name(name)
   sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
   DB[:conn].execute(sql, name)
-end
+  end
 
 end
